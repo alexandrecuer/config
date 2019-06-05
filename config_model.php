@@ -14,7 +14,7 @@ namespace emonhub;
 defined('EMONCMS_EXEC') or die('Restricted access');
 class Config
 {
-    public static $config_file = "/home/pi/data/emonhub.conf";
+    public static $config_file = "emonhub.conf";
     public static $logfile = "/var/log/emonhub/emonhub.log";
     public static $restart_log_name = "restart.log";
 

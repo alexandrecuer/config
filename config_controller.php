@@ -21,7 +21,7 @@ function config_controller()
     // @todo: not sure if tabs should be used? Routes not complete for each tab in config_menu.php
     $tabs = ''; // override with blank string
     $log_levels = \emonhub\Config::$log_levels;
-    $emonhub_config_file = \emonhub\Config::$config_file;
+    $emonhub_config_file = sprintf("%s/%s","$homedir/data",\emonhub\Config::$config_file);
     $emonhub_logfile = \emonhub\Config::$logfile;
     $restart_log= sprintf("%s/%s",$homedir,\emonhub\Config::$restart_log_name);
 
