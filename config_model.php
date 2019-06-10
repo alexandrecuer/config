@@ -15,7 +15,7 @@ defined('EMONCMS_EXEC') or die('Restricted access');
 class Config
 {
     public static $config_file = "emonhub.conf";
-    public static $logfile = "/var/log/emonhub/emonhub.log";
+    public static $logfile = "emonhub.log";
     public static $restart_log_name = "restart.log";
 
     public static $log_levels = array(

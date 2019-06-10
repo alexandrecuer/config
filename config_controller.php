@@ -21,10 +21,18 @@ function config_controller()
     // @todo: not sure if tabs should be used? Routes not complete for each tab in config_menu.php
     $tabs = ''; // override with blank string
     $log_levels = \emonhub\Config::$log_levels;
-    $emonhub_config_file = sprintf("%s/%s","$homedir/data",\emonhub\Config::$config_file);
-    $emonhub_logfile = \emonhub\Config::$logfile;
+    if ($env = file_get_contents("/etc/emonhub/emonhub.env")){
+      preg_match_all("/([\w_]+)=([\/\w]+)\n/",$env,$vars);
+      $ehenv=array_combine($vars[1],$vars[2]);
+      $emonhub_config_root=$ehenv["EMONHUB_CONF"];
+      $emonhub_log_root=$ehenv["EMONHUB_LOG"];
+    } else {
+      $emonhub_config_root="$homedir/data";
+      $emonhub_log_root="/var/log";
+    }
+    $emonhub_config_file = sprintf("%s/%s",$emonhub_config_root,\emonhub\Config::$config_file);
+    $emonhub_logfile = sprintf("%s/%s",$emonhub_log_root,\emonhub\Config::$logfile);
     $restart_log= sprintf("%s/%s",$homedir,\emonhub\Config::$restart_log_name);
-
     if (!$session['write']) return false;
     
     if ($route->action == '') {
