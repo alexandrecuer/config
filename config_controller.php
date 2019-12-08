@@ -32,7 +32,7 @@ function config_controller()
     }
     $emonhub_config_file = sprintf("%s/%s",$emonhub_config_root,\emonhub\Config::$config_file);
     $emonhub_logfile = sprintf("%s/%s",$emonhub_log_root,\emonhub\Config::$logfile);
-    $restart_log= sprintf("%s/%s",$homedir,\emonhub\Config::$restart_log_name);
+    $restart_log= sprintf("%s/%s",$emonhub_log_root,\emonhub\Config::$restart_log_name);
     if (!$session['write']) return false;
     
     if ($route->action == '') {
